@@ -7,21 +7,21 @@
 
 Using this website to extract all the neccesary dependencies for SpringBoot Project
 
-```https://start.spring.io/```
+`https://start.spring.io/`
  
 ### Maven
 
 Set the Java directory for the terminal session for using maven build
 
-``` set JAVA_HOME="D:\Java_21\Java_21"```
+`set JAVA_HOME="D:\Java_21\Java_21`
 
 Check Maven Version
 
-```mvn -v```
+`mvn -v`
 
 Maven build command
 
-```mvn clean package```
+`mvn clean package`
 
 ### Postgres
 
