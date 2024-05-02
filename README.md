@@ -12,9 +12,6 @@
 1. Spring Web ::  Build web, inclduing RESTful applications using SpringMVC
 2. Spring Data JPA:: Persist data in SQL stores plain JDBC using Spring Data
 
-
-(https://start.spring.io/)
-
 ## SpringBoot Workflow:
 
 The SpringBoot dependencies are downloaded in a ZIP folder, extracted, the
@@ -29,9 +26,14 @@ Target: All the build application module in the form of Jar are stored & located
 
 ## Setting Java
 
-1. Ensure that the terminal path has been set to the Java\bin folder
+```
+set path="Java_21\bin"
+java -jar target\<application>.jar
+```
 
-2. After completing the build operations of the total application, execute this command:: `java -jar target\<application>.jar`
+<br>
+The SpringBoot Project Configuration:: (https://start.spring.io/)
+
 
 
   
