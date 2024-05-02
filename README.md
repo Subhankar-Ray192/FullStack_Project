@@ -51,3 +51,23 @@ mvn clean package
 
 The mvn clean package is used to rebuild from scratch all the downloaded dependencies
 & also re-package it into a single Jar file located at the target folder
+
+# Postgres
+
+Postgres is a RDBMS which is utilised and initialized with a set of intial
+tables
+
+```
+<path>\bin\psql.exe -U postgres
+
+\? :: Help
+
+\l
+\c <Database>
+\d <Table> 
+```
+
+This is the terminal SQL in Postgresql which will be used to check the validity
+of the database and the required information that has to be fed to the application.properties file
+in main\src
+
