@@ -36,4 +36,18 @@ The SpringBoot Project Configuration:: (https://start.spring.io/)
 
 
 
-  
+# Maven
+
+Maven is abuild tool which is used to package all the external dependencies 
+of our application into a single Jar file stored & located at the target folder
+
+```
+set path="Maven\apache-maven-3.9.6-bin\apache-maven-3.9.6\bin"
+set JAVA_HOME="Java_21"
+
+mvn -v
+mvn clean package
+```
+
+The mvn clean package is used to rebuild from scratch all the downloaded dependencies
+& also re-package it into a single Jar file located at the target folder
