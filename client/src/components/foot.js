@@ -1,6 +1,6 @@
 // src/components/Footer.js
 import React from "react";
-import "../styles/foot.css"; // Import the CSS file
+import "../styles/default_style.css";
 import "../styles/socials.css";
 
 const Footer = () => {
