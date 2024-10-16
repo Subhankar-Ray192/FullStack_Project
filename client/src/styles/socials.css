@@ -1,10 +1,29 @@
 /* src/styles/foot.css */
 
+/* Define CSS variables for consistent styling */
+:root {
+  --primary-background-color: #000; /* Primary background color */
+  --secondary-background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Default social icon background */
+  --hover-background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Hover background color */
+  --text-color: #fff; /* Text color */
+  --icon-font-size: 32px; /* Icon font size */
+}
+
 .foot {
   padding: 20px;
   text-align: center;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--primary-background-color); /* Use variable */
+  color: var(--text-color); /* Use variable */
   bottom: 0;
 }
 
@@ -17,29 +36,20 @@
   align-items: center; /* Vertically center icons */
   justify-content: center; /* Horizontally center icons */
   border-radius: 50%; /* Makes the icon background circular */
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.1
-  ); /* Optional: adds a background color for visibility */
+  background-color: var(--secondary-background-color); /* Use variable */
   transition: background-color 0.3s; /* Smooth background change on hover */
 }
 
 .social-icons:hover {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.2
-  ); /* Change background color on hover */
+  background-color: var(--hover-background-color); /* Use variable */
 }
 
 .icon {
-  font-size: 32px; /* Increase icon size from 24px to 32px */
+  font-size: var(--icon-font-size); /* Use variable for icon size */
   transition: transform 0.2s; /* Adds a hover effect */
 }
 
 .icon:hover {
   transform: scale(1.2); /* Scale effect on hover */
 }
+
