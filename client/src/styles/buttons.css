@@ -1,0 +1,17 @@
+/* src/styles/button.css */
+.button {
+  display: inline-block; /* To align horizontally */
+  padding: 5px 20px; /* Adjust the padding as needed */
+  margin: 5px; /* Optional: Space between buttons */
+  background-color: #007bff; /* Background color */
+  color: #fff; /* Text color */
+  text-align: center; /* Center the text */
+  border: none; /* Remove default button border */
+  border-radius: 2px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.button:hover {
+  background-color: #0056b3; /* Darker background on hover */
+}

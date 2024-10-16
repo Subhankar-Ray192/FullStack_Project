@@ -1,0 +1,45 @@
+/* src/styles/foot.css */
+
+.foot {
+  padding: 20px;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  bottom: 0;
+}
+
+.social-icons {
+  padding: 10px;
+  margin: 0 5px; /* Adds spacing between icons */
+  width: 50px; /* Set a fixed width */
+  height: 50px; /* Set a fixed height */
+  display: flex; /* Center contents */
+  align-items: center; /* Vertically center icons */
+  justify-content: center; /* Horizontally center icons */
+  border-radius: 50%; /* Makes the icon background circular */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Optional: adds a background color for visibility */
+  transition: background-color 0.3s; /* Smooth background change on hover */
+}
+
+.social-icons:hover {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Change background color on hover */
+}
+
+.icon {
+  font-size: 32px; /* Increase icon size from 24px to 32px */
+  transition: transform 0.2s; /* Adds a hover effect */
+}
+
+.icon:hover {
+  transform: scale(1.2); /* Scale effect on hover */
+}
