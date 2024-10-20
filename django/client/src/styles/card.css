@@ -1,0 +1,32 @@
+/* card.css */
+:root {
+  --card-background: #fff; /* Light background */
+  --card-text-color: #333; /* Dark text */
+  --card-subtext-color: #666; /* Gray for subtext */
+  --card-border-radius: 8px; /* Border radius */
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow */
+  --card-padding: 16px; /* Padding */
+  --card-margin: 16px; /* Margin */
+}
+
+.card {
+  background: var(--card-background);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding);
+  margin: var(--card-margin);
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card h2 {
+  margin-bottom: 16px;
+  font-size: 1.5em;
+  color: var(--card-text-color); /* Heading color */
+}
+
+.card p {
+  margin-bottom: 16px;
+  color: var(--card-subtext-color); /* Subtext color */
+}
