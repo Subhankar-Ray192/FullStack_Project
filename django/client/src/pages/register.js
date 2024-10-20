@@ -82,6 +82,7 @@ const Registration = () => {
             />
           </div>
           <div className="button">Submit</div>
+          <div className="link">Forget Password?</div>
         </form>
       </div>
 
@@ -150,6 +151,7 @@ const Registration = () => {
             />
           </div>
           <div className="button">Submit</div>
+          <div className="link">Forget Password?</div>
         </form>
       </div>
       <Footer />
