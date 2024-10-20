@@ -1,45 +1,48 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 /* Base styles for common properties */
 :root {
-  --body-color: #fed0c1;
+  --body-color: #fed0c1; /* Light background color */
+  --footer-background-color: #000; /* Black footer background color */
+  --text-color: #fff; /* White text color for contrast */
+  --footer-padding: 20px; /* Footer padding */
 }
 
+/* Body Styles */
 body {
-  position: relative; /* Set the body as relative */
-  min-height: 300vh; /* Full viewport height */
-  background-color: var(--body-color);
+  position: relative; /* Positioning context for absolute elements */
+  min-height: 300vh; /* Set minimum height for the body */
+  background-color: var(--body-color); /* Background color */
 }
 
+/* Registration Container */
 .registration-container {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  margin-top: px;
+  display: flex; /* Flexbox layout */
+  justify-content: space-around; /* Space around items */
+  width: 100%; /* Full width */
+  padding: 1rem; /* Add padding for spacing */
 }
 
-/* Registration.css */
-.registration-container {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
+/* Registration Form Styles */
+.registration-form {
+  display: flex; /* Ensure form elements align properly */
+  flex-direction: column; /* Stack form elements vertically */
+  max-width: 400px; /* Set max width for forms */
+  margin: 1rem; /* Margin for spacing */
 }
 
 .registration-form div {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem; /* Space between form fields */
 }
 
+/* Footer Styles */
 .foot {
   position: absolute; /* Absolute positioning */
-  left: 0;
-  right: 0;
+  left: 0; /* Align to the left */
+  right: 0; /* Align to the right */
   bottom: 0; /* Stick to the bottom */
-  padding: 20px;
-  text-align: center;
-  background-color: var(--primary-background-color);
-  color: var(--text-color);
+  padding: var(--footer-padding); /* Use variable for padding */
+  text-align: center; /* Center text */
+  background-color: var(
+    --footer-background-color
+  ); /* Set footer background to black */
+  color: var(--text-color); /* Set text color to white */
 }
