@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=your_project.settings
+    command: python manage.py runserver 0.0.0.0:8000
