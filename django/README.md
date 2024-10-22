@@ -23,13 +23,18 @@ print(os.getenv('{PATH_VAR}'))
 
 ## Django::Configuration Steps
 
-The project name for our purposes has been defined as ERS(Exam-Room-Allocation)
-System. The application name for this puporse will be ERS-App
+The project name for our purposes has been defined as server
+System. The application name for this puporse will be
 
 ``` 
 !pip install django
+!pip install pyngrok --quiet
 !pip install djangorestframework.jsonapi
 !pip install python-dotenv
+!pip install inflection
+!pip install django-extensions
+!pip install django-cors-headers
+!pip install django-filter
 
 !django-admin startproject {project_name}
 
