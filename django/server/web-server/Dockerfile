@@ -13,11 +13,33 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Check if Python and Django are installed
 RUN python --version && django-admin --version
 
-# Copy the current directory contents into the container at /usr/src/app
-COPY . .
+# Create a new Django project and apps
+RUN django-admin startproject server && \
+    cd /usr/src/app/server && \
+    python manage.py startapp pages && \
+    python manage.py startapp authenticate && \
+    python manage.py startapp authorize
 
-# Expose port 8000 for the Django server
-EXPOSE 8000
+# Copy the setup.py script into the container
+COPY setup.py /usr/src/app/server/setup.py
+
+# Run setup.py to create necessary files
+RUN cd /usr/src/app/server && \
+    python setup.py
+
+# Copy the already created settings.py into the correct location
+COPY settings.py /usr/src/app/server/server/settings.py
+
+# Collect static files
+RUN cd /usr/src/app/server && \
+    python manage.py collectstatic --noinput
+
+# Make migrations for the database
+RUN cd /usr/src/app/server && \
+    python manage.py makemigrations
+
+# Expose port 7000 for the Django server
+EXPOSE 7000
 
 # Set the default command to run the Django development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:7000"]
