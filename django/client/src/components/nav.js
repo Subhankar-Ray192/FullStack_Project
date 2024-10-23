@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/default_style.css";
-import "../styles/button.css";
+import "../styles/buttons.css";
 import { Link } from "react-router-dom";
 
 const Nav = () => {
@@ -14,7 +14,7 @@ const Nav = () => {
         <Link to="/login" className="button">
           Login
         </Link>
-        <Link to="/" className="button">
+        <Link className="button">
           FAQ
         </Link>
       </div>

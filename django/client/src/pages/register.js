@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "../styles/register/default_style.css";
-import "../styles/button.css";
+import "../styles/buttons.css";
 import "../styles/card.css";
 import "../styles/input.css";
 import "../styles/register/font.css";
 import Footer from "../components/foot.js";
 import axios from "axios";
+
+const root_url = ""; // Define your backend URL here
 
 const Registration = () => {
   const [organizationForm, setOrganizationForm] = useState({
@@ -33,11 +35,14 @@ const Registration = () => {
     setIndividualForm({ ...individualForm, [name]: value });
   };
 
-  const handleOrgSubmit = async () => {
+  const handleOrgSubmit = async (e) => {
+    e.preventDefault(); // Prevent form from submitting
+
     const payload = {
       data: {
         type: "OrganizationRegisterView",
         attributes: {
+          data: "Organization Registration",
           org_name: organizationForm.organizationName,
           org_email: organizationForm.organizationEmail,
           org_password: organizationForm.organizationPassword,
@@ -45,24 +50,28 @@ const Registration = () => {
       },
     };
 
-    const url = "https://root/register/organisation/submit";
-    
-    try {
-       const response = await axios.post(url, payload, {
-       headers: {
-        "Content-Type": "application/vnd.api+json",
-         },
-      });
-    }catch (error){
-        console.error("Error during individual registration:", error.response?.data || error);
-    }
- };
+    const url = root_url + "register/organization/submit/";
 
-  const handleIndividualSubmit = async () => {
+    try {
+      const response = await axios.post(url, payload, {
+        headers: {
+          "Content-Type": "application/vnd.api+json",
+        },
+      });
+      console.log("Organization registered successfully:", response.data);
+    } catch (error) {
+      console.error("Error during organization registration:", error.response?.data || error);
+    }
+  };
+
+  const handleIndividualSubmit = async (e) => {
+    e.preventDefault(); // Prevent form from submitting
+
     const payload = {
       data: {
         type: "IndividualRegisterView",
         attributes: {
+          data: "Individual Registration",
           organizationName: individualForm.organizationName,
           individualType: individualForm.individualType,
           individualName: individualForm.individualName,
@@ -73,16 +82,23 @@ const Registration = () => {
       },
     };
 
-    const url = "https://root/register/individual/submit";
+    let url = "";
+
+    if (individualForm.individualType === "Teacher") {
+      url = root_url + "register/teacher/submit/";
+    } else {
+      url = root_url + "register/student/submit/";
+    }
 
     try {
-       const response = await axios.post(url, payload, {
-       headers: {
-        "Content-Type": "application/vnd.api+json",
-         },
+      const response = await axios.post(url, payload, {
+        headers: {
+          "Content-Type": "application/vnd.api+json",
+        },
       });
-    }catch (error){
-        console.error("Error during individual registration:", error.response?.data || error);
+      console.log("Individual registered successfully:", response.data);
+    } catch (error) {
+      console.error("Error during individual registration:", error.response?.data || error);
     }
   };
 
@@ -91,7 +107,7 @@ const Registration = () => {
       {/* Organization Registration Form */}
       <div className="card">
         <h2>Organization</h2>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={handleOrgSubmit}>
           <div>
             <input
               type="text"
@@ -130,7 +146,7 @@ const Registration = () => {
       {/* Individual Registration Form */}
       <div className="card">
         <h2>Individual</h2>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={handleIndividualSubmit}>
           <div>
             <input
               type="text"

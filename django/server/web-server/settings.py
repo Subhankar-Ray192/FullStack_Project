@@ -1,3 +1,5 @@
+%%writefile /content/server/server/settings.py
+
 """
 Django settings for TestProject project.
 
@@ -14,7 +16,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 # Load the .env file explicitly
-dotenv_path = Path('/content/drive/MyDrive/<Project-Folder>/Code/KEYS/settings.env')
+dotenv_path = Path('/content/drive/MyDrive/Project_Exam_Room_Allocation/Code/keys/settings.env')
 load_dotenv(dotenv_path=dotenv_path)
 
 
@@ -57,13 +59,16 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.ngrok-free.app',  # Allow any ngrok subdomain
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

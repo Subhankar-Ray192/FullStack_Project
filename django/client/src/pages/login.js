@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "../styles/login/default_style.css";
-import "../styles/button.css";
+import "../styles/buttons.css";
 import "../styles/card.css";
 import "../styles/input.css";
 import "../styles/login/font.css";
 import axios from "axios";
+
+const root_url = ""; // Define your backend URL here
 
 const Login = () => {
   const [organizationLoginForm, setOrganizationLoginForm] = useState({
@@ -45,13 +47,13 @@ const Login = () => {
       data: {
         type: "LoginView",
         attributes: {
-          email: organizationLoginForm.organizationEmail, // Fix reference to organizationLoginForm
-          password: organizationLoginForm.organizationPassword, // Fix reference to organizationLoginForm
+          email: organizationLoginForm.organizationEmail,
+          password: organizationLoginForm.organizationPassword,
         },
       },
     };
 
-    const url = "https://root/login/organisation/submit";
+    const url = root_url + "login/submit/";
 
     try {
       const response = await axios.post(url, payload, {
@@ -76,14 +78,14 @@ const Login = () => {
       data: {
         type: "LoginView",
         attributes: {
-          org_name: individualLoginForm.organizationName, // Fix reference to individualLoginForm
-          email: individualLoginForm.individualEmail, // Fix typo in individualEmail
-          password: individualLoginForm.individualPassword, // Fix typo in individualPassword
+          org_name: individualLoginForm.organizationName,
+          email: individualLoginForm.individualEmail,
+          password: individualLoginForm.individualPassword,
         },
       },
     };
 
-    const url = "https://root/login/individual/submit";
+    const url = root_url + "login/individual/submit/";
 
     try {
       const response = await axios.post(url, payload, {
@@ -136,9 +138,9 @@ const Login = () => {
               required
             />
           </div>
-          <button type="submit" className="button">
+          <div className="button" onClick={handleOrgSubmit}>
             Submit
-          </button>
+          </div>
           <div className="link">Forget Password?</div>
         </form>
       </div>
@@ -177,9 +179,9 @@ const Login = () => {
               required
             />
           </div>
-          <button type="submit" className="button">
+          <div className="button" onClick={handleIndividualSubmit}>
             Submit
-          </button>
+          </div>
           <div className="link">Forget Password?</div>
         </form>
       </div>
