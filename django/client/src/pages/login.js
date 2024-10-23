@@ -4,6 +4,7 @@ import "../styles/button.css";
 import "../styles/card.css";
 import "../styles/input.css";
 import "../styles/login/font.css";
+import axios from "axios";
 
 const Login = () => {
   const [organizationLoginForm, setOrganizationLoginForm] = useState({
@@ -37,17 +38,66 @@ const Login = () => {
   };
 
   // Handle organization login form submission
-  const handleOrgSubmit = (e) => {
+  const handleOrgSubmit = async (e) => {
     e.preventDefault();
-    console.log("Organization Login Data:", organizationLoginForm);
-    // Add your organization login logic here
+
+    const payload = {
+      data: {
+        type: "LoginView",
+        attributes: {
+          email: organizationLoginForm.organizationEmail, // Fix reference to organizationLoginForm
+          password: organizationLoginForm.organizationPassword, // Fix reference to organizationLoginForm
+        },
+      },
+    };
+
+    const url = "https://root/login/organisation/submit";
+
+    try {
+      const response = await axios.post(url, payload, {
+        headers: {
+          "Content-Type": "application/vnd.api+json",
+        },
+      });
+      console.log("Response from Organization Login:", response.data);
+    } catch (error) {
+      console.error(
+        "Error during organization login:",
+        error.response?.data || error
+      );
+    }
   };
 
   // Handle individual login form submission
-  const handleIndividualSubmit = (e) => {
+  const handleIndividualSubmit = async (e) => {
     e.preventDefault();
-    console.log("Individual Login Data:", individualLoginForm);
-    // Add your individual login logic here
+
+    const payload = {
+      data: {
+        type: "LoginView",
+        attributes: {
+          org_name: individualLoginForm.organizationName, // Fix reference to individualLoginForm
+          email: individualLoginForm.individualEmail, // Fix typo in individualEmail
+          password: individualLoginForm.individualPassword, // Fix typo in individualPassword
+        },
+      },
+    };
+
+    const url = "https://root/login/individual/submit";
+
+    try {
+      const response = await axios.post(url, payload, {
+        headers: {
+          "Content-Type": "application/vnd.api+json",
+        },
+      });
+      console.log("Response from Individual Login:", response.data);
+    } catch (error) {
+      console.error(
+        "Error during individual login:",
+        error.response?.data || error
+      );
+    }
   };
 
   return (
