@@ -1,10 +1,10 @@
 // RegistrationPage.js
 import React, { useState } from "react";
-import "../styles/register.css";
+import "../styles/register/default_style.css";
 import "../styles/button.css";
 import "../styles/card.css";
 import "../styles/input.css";
-import "../styles/registration/heading.css";
+import "../styles/register/font.css";
 import Footer from "../components/foot.js";
 
 const Registration = () => {
@@ -154,7 +154,6 @@ const Registration = () => {
           <div className="link">Forget Password?</div>
         </form>
       </div>
-      <Footer />
     </div>
   );
 };

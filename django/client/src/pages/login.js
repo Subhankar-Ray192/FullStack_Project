@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "../styles/login.css";
+import "../styles/login/default_style.css";
 import "../styles/button.css";
 import "../styles/card.css";
 import "../styles/input.css";
-import "../styles/registration/heading.css";
+import "../styles/login/font.css";
 
 const Login = () => {
   const [organizationLoginForm, setOrganizationLoginForm] = useState({

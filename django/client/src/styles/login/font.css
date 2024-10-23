@@ -1,0 +1,11 @@
+h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.link {
+  color: blue;
+  font-size: 0.8rem; /* Adjust this value as needed for smaller text */
+  margin-left: 5px;
+  text-decoration: none; /* To remove underline */
+}

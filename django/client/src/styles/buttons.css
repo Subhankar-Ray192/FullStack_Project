@@ -24,6 +24,7 @@
   ); /* Use variable for border radius */
   cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.3s; /* Smooth background transition */
+  text-decoration: none;
 }
 
 .button:hover {
