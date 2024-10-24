@@ -4,7 +4,6 @@ import "../styles/buttons.css";
 import "../styles/card.css";
 import "../styles/input.css";
 import "../styles/register/font.css";
-import Footer from "../components/foot.js";
 import axios from "axios";
 
 const root_url = ""; // Define your backend URL here
