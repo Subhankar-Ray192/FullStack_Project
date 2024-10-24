@@ -52,7 +52,7 @@ const Registration = () => {
       },
     };
 
-    const url = root_url + "register/organization/submit/";
+    const url = root_url + "/register/organization/submit/";
 
     try {
       const response = await axios.post(url, payload, {
@@ -88,9 +88,9 @@ const Registration = () => {
     let url = "";
 
     if (individualForm.individualType === "Teacher") {
-      url = root_url + "register/teacher/submit/";
+      url = root_url + "/register/teacher/submit/";
     } else {
-      url = root_url + "register/student/submit/";
+      url = root_url + "/register/student/submit/";
     }
 
     try {

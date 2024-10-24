@@ -53,7 +53,7 @@ const Login = () => {
       },
     };
 
-    const url = root_url + "login/submit/";
+    const url = root_url + "/login/submit/";
 
     try {
       const response = await axios.post(url, payload, {
@@ -85,7 +85,7 @@ const Login = () => {
       },
     };
 
-    const url = root_url + "login/individual/submit/";
+    const url = root_url + "/login/individual/submit/";
 
     try {
       const response = await axios.post(url, payload, {
