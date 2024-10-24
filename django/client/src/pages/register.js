@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/register/default_style.css";
 import "../styles/buttons.css";
 import "../styles/card.css";
@@ -58,6 +59,7 @@ const Registration = () => {
         },
       });
       console.log("Organization registered successfully:", response.data);
+      navigate("/");
     } catch (error) {
       console.error("Error during organization registration:", error.response?.data || error);
     }
@@ -96,6 +98,7 @@ const Registration = () => {
         },
       });
       console.log("Individual registered successfully:", response.data);
+      navigate("/");
     } catch (error) {
       console.error("Error during individual registration:", error.response?.data || error);
     }
