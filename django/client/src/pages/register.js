@@ -35,6 +35,8 @@ const Registration = () => {
     setIndividualForm({ ...individualForm, [name]: value });
   };
 
+  const navigate = useNavigate();
+
   const handleOrgSubmit = async (e) => {
     e.preventDefault(); // Prevent form from submitting
 
