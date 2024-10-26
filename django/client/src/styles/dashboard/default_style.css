@@ -1,114 +1,16 @@
-/* Define Color Variables */
-:root {
-  --bg-main: #f9f9f9;
-  --bg-section: #fed0c1;
-  --border-color: #000;
-  --dropdown-border: #ccc;
-  --table-header-bg: #d83703;
-  --button-bg: #007bff;
-  --button-bg-hover: #0056b3;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+.dashboard {
+  display: flex;
 }
 
-/* Dashboard Container */
-.dashboard-container {
-  display: flex;
-  height: 300vh;
-  width: 100%;
-  background-color: var(--bg-main);
-}
-
-/* Section Styles */
-.section-left,
-.section-right {
-  flex: 1;
-  background-color: var(--bg-section);
-  display: flex;
-  flex-direction: column;
+.content {
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
   padding: 20px;
-  box-shadow: 0 4px 8px var(--shadow-color);
+  flex-grow: 1;
+  background-color: #f4f4f4;
+  height: 100vh;
 }
 
-.section-left {
-  max-width: 35%;
-  border-right: 1px solid var(--border-color);
-}
-
-.section-right {
-  max-width: 65%;
-}
-
-/* Common Styling for Details */
-.details {
-  margin: 0 10px;
-}
-
-/* Header Styling */
-h2 {
-  margin-bottom: 1rem;
-  text-align: center;
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 0.5rem;
-}
-
-/* Paragraph Styling */
-.details p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  color: #000;
-}
-
-/* Dropdown Styling */
-.filter-dropdown {
-  margin-top: 1rem;
-}
-
-.filter-dropdown select {
-  padding: 0.5rem;
-  border-radius: 4px;
-  border: 1px solid var(--dropdown-border);
-  background-color: #fff;
-}
-
-/* Table Styling */
-.table-container {
-  margin-top: 1rem;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: 0.75rem;
-  text-align: left;
-  border: 1px solid var(--border-color);
-}
-
-th {
-  background-color: var(--table-header-bg);
-}
-
-/* Pagination Styling */
-.pagination {
-  margin-top: 1rem;
-  display: flex;
-  gap: 5px;
-}
-
-.pagination button {
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: var(--button-bg);
-  color: #fff;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.pagination button.active,
-.pagination button:hover {
-  background-color: var(--button-bg-hover);
+.content.expanded {
+  margin-left: 250px; /* Adjust according to sidebar width */
 }

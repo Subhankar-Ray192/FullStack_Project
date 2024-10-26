@@ -1,6 +1,6 @@
 // src/components/Nav.js
 import React from "react";
-import "../../styles/home.css"; // Import the CSS file
+import "../../styles/default_style.css"; // Import the CSS file
 import "../../styles/button.css";
 
 const Nav = () => {
