@@ -1,11 +1,11 @@
 import React from "react";
-import "../styles/sidebar.css";
+import "../../../styles/dashboard/sidebar.css";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
     <div className={`sidebar ${isOpen ? "open" : ""}`}>
       <button className="toggle-btn" onClick={toggleSidebar}>
-        {isOpen ? <i class="bx bx-x"></i> : "Open"}
+        {isOpen ? <i className="bx bx-x"></i> : "Open"}
       </button>
       <nav className="sidebar-nav">
         <div>

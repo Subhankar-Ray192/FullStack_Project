@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/login/default_style.css";
 import "../styles/buttons.css";
 import "../styles/card.css";
@@ -53,7 +54,7 @@ const Login = () => {
       },
     };
 
-    const url = root_url + "/login/submit/";
+    const url = root_url + "/authorize/login/submit/";
 
     try {
       const response = await axios.post(url, payload, {
@@ -62,6 +63,7 @@ const Login = () => {
         },
       });
       console.log("Response from Organization Login:", response.data);
+      navigate("/admin-dashboard");
     } catch (error) {
       console.error(
         "Error during organization login:",
@@ -85,7 +87,7 @@ const Login = () => {
       },
     };
 
-    const url = root_url + "/login/individual/submit/";
+    const url = root_url + "/authorize/login/submit/";
 
     try {
       const response = await axios.post(url, payload, {

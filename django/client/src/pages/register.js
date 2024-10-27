@@ -47,12 +47,12 @@ const Registration = () => {
           data: "Organization Registration",
           org_name: organizationForm.organizationName,
           org_email: organizationForm.organizationEmail,
-          org_password: organizationForm.organizationPassword,
+          password: organizationForm.organizationPassword,
         },
       },
     };
 
-    const url = root_url + "/register/organization/submit/";
+    const url = root_url + "/authenticate/register/organization/submit/";
 
     try {
       const response = await axios.post(url, payload, {
@@ -88,9 +88,9 @@ const Registration = () => {
     let url = "";
 
     if (individualForm.individualType === "Teacher") {
-      url = root_url + "/register/teacher/submit/";
+      url = root_url + "/authenticate/register/teacher/submit/";
     } else {
-      url = root_url + "/register/student/submit/";
+      url = root_url + "/authenticate/register/student/submit/";
     }
 
     try {

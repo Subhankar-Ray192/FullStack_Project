@@ -4,7 +4,7 @@ import "../../styles/dashboard/default_style.css";
 import Navbar from "../../components/dashboard/nav";
 import Footer from "../../components/foot";
 
-const Dashboard = () => {
+const StudentDashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -33,4 +33,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default StudentDashboard;
