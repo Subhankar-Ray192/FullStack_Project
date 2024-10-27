@@ -2,12 +2,15 @@
   display: flex;
 }
 
+.admin-panel {
+}
+
 .content {
   margin-left: 0;
   transition: margin-left 0.3s ease;
   padding: 20px;
   flex-grow: 1;
-  background-color: #f4f4f4;
+  background-color: #fed0c1;
   height: 100vh;
 }
 

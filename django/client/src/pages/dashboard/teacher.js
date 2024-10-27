@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sidebar from "../../components/dashboard/admin/sidebar";
+import Sidebar from "../../components/dashboard/teacher/sidebar";
 import "../../styles/dashboard/default_style.css";
 import Navbar from "../../components/dashboard/nav";
 import Footer from "../../components/foot";

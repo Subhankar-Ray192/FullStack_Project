@@ -5,15 +5,18 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
     <div className={`sidebar ${isOpen ? "open" : ""}`}>
       <button className="toggle-btn" onClick={toggleSidebar}>
-        {isOpen ? "Close" : "Open"} Sidebar
+        {isOpen ? <i class="bx bx-x"></i> : "Open"}
       </button>
       <nav className="sidebar-nav">
-        <h1>Organization Name</h1>
-        <ul>
-          <li>Name: Loading</li>
-          <li>Members: Loading</li>
-          <li></li>
-        </ul>
+        <div>
+          <h1>Organization Name</h1>
+          <ul>
+            <li>Name: Loading</li>
+            <li>Department: Loading </li>
+            <li>Semester: Loading</li>
+            <li>Year: Loading</li>
+          </ul>
+        </div>
       </nav>
     </div>
   );

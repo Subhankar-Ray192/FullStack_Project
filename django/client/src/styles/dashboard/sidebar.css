@@ -2,12 +2,13 @@
   width: 250px;
   background-color: #333;
   color: white;
-  height: 100vh;
-  position: fixed;
+  height: 270vh;
+  position: absolute;
   left: -250px; /* Start hidden */
   transition: left 0.3s ease;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 }
 
 .sidebar.open {
@@ -15,10 +16,10 @@
 }
 
 .toggle-btn {
-  background-color: #444;
+  background-color: #ff0000;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
   margin-bottom: 20px;
 }
