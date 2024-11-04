@@ -31,6 +31,8 @@ const Login = () => {
     }));
   };
 
+  const navigate = useNavigate();
+
   // Handle changes for individual login form
   const handleIndividualChange = (e) => {
     const { name, value } = e.target;
