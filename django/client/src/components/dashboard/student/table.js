@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/dashboard/table.css";
+import "../../../styles/dashboard/table.css";
 
 const Table = ({ headings, data }) => {
   const [currentPage, setCurrentPage] = useState(1);

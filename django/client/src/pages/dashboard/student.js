@@ -4,7 +4,7 @@ import "../../styles/dashboard/default_style.css";
 import Navbar from "../../components/dashboard/nav";
 import Footer from "../../components/foot";
 import Dropdown from "../../components/dashboard/dropdown";
-import Table from "../../components/dashboard/table";
+import Table from "../../components/dashboard/student/table";
 
 const StudentDashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);

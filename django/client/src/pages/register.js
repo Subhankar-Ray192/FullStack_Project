@@ -178,7 +178,6 @@ const Registration = () => {
               <option value="student">Student</option>
             </select>
           </div>
-          </div>
           <div>
             <input
               type="text"

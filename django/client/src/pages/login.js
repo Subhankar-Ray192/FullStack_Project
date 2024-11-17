@@ -87,6 +87,8 @@ const Login = () => {
       },
     };
 
+    let url = "";
+
     if (individualLoginForm.individualType === "Teacher") {
       url = root_url + "/authorize/teacher/submit/";
       payload.data.type = "TeacherLoginView";  
