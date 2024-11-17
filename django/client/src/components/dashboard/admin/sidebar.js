@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import "../../../styles/dashboard/sidebar.css";
 import "../../../styles/buttons.css";
+import { jwtDecode } from "jwt-decode";
+import Cookies from 'js-cookie';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
+  const [decoded, setDecoded] = useState(null); // Use state to store decoded JWT
+
+  useEffect(() => {
+    const accessToken = Cookies.get('access_token');
+    console.log('Access Token from Cookie:', accessToken);
+    
+    if (accessToken) {
+      try {
+        const decodedData = jwtDecode(accessToken);
+        setDecoded(decodedData); // Store the decoded data in state
+        console.log('Decoded JWT:', decodedData);
+      } catch (error) {
+        console.error('Error decoding JWT:', error);
+      }
+    } else {
+      console.error('No access token found in cookies');
+    }
+  }, []);
+
+
   return (
     <div className={`sidebar ${isOpen ? "open" : ""}`}>
       <button className="toggle-btn" onClick={toggleSidebar}>
@@ -10,25 +32,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       </button>
       <nav className="sidebar-nav">
         <div>
-          <h1>Organization Name</h1>
+          <h1>{decoded ? decoded.org_name : "Loading..."}</h1>
           <ul>
-            <li>Members: Loading</li>
-          </ul>
-        </div>
-        <div>
-          <ul>
-            <li>
-              <div className="button">Register Rooms</div>
-            </li>
-            <li>
-              <div className="button">Register Courses</div>
-            </li>
-            <li>
-              <div className="button">Register Departments</div>
-            </li>
-            <li>
-              <div className="button">Generate Schedule</div>
-            </li>
+            <li>{decoded ? decoded.email : "Loading..."}</li>
           </ul>
         </div>
       </nav>
