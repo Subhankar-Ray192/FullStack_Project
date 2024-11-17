@@ -11,13 +11,12 @@ const root_url = ""; // Define your backend URL here
 
 const Login = () => {
   const [organizationLoginForm, setOrganizationLoginForm] = useState({
-    organizationName: "",
     organizationEmail: "",
     organizationPassword: "",
   });
 
   const [individualLoginForm, setIndividualLoginForm] = useState({
-    organizationName: "",
+    individualType: "",
     individualEmail: "",
     individualPassword: "",
   });
@@ -48,7 +47,7 @@ const Login = () => {
 
     const payload = {
       data: {
-        type: "LoginView",
+        type: "OrganizationLoginView",
         attributes: {
           email: organizationLoginForm.organizationEmail,
           password: organizationLoginForm.organizationPassword,
@@ -56,7 +55,7 @@ const Login = () => {
       },
     };
 
-    const url = root_url + "/authorize/login/submit/";
+    const url = root_url + "/authorize/organization/submit/";
 
     try {
       const response = await axios.post(url, payload, {
@@ -80,16 +79,22 @@ const Login = () => {
 
     const payload = {
       data: {
-        type: "LoginView",
+        type: "None",
         attributes: {
-          org_name: individualLoginForm.organizationName,
           email: individualLoginForm.individualEmail,
           password: individualLoginForm.individualPassword,
         },
       },
     };
 
-    const url = root_url + "/authorize/login/submit/";
+    if (individualLoginForm.individualType === "Teacher") {
+      url = root_url + "/authorize/teacher/submit/";
+      payload.data.type = "TeacherLoginView";  
+    } 
+    else {
+      url = root_url + "/authorize/student/submit/";
+      payload.data.type = "StudentLoginView";
+    }
 
     try {
       const response = await axios.post(url, payload, {
@@ -112,16 +117,6 @@ const Login = () => {
       <div className="card">
         <h2>Organization Login</h2>
         <form onSubmit={handleOrgSubmit}>
-          <div>
-            <input
-              type="text"
-              name="organizationName"
-              placeholder="Organization Name"
-              value={organizationLoginForm.organizationName}
-              onChange={handleOrgChange}
-              required
-            />
-          </div>
           <div>
             <input
               type="email"
@@ -153,15 +148,18 @@ const Login = () => {
       <div className="card">
         <h2>Individual Login</h2>
         <form onSubmit={handleIndividualSubmit}>
-          <div>
-            <input
-              type="text"
-              name="organizationName"
-              placeholder="Organization Name"
-              value={individualLoginForm.organizationName}
+           <div>
+            <select
+              name="individualType"
+              value={individualLoginForm.individualType}
               onChange={handleIndividualChange}
               required
-            />
+              className="input" // Ensures consistent styling with other inputs
+            >
+              <option value="" disabled hidden>Select Individual Type</option>
+              <option value="teacher">Teacher</option>
+              <option value="student">Student</option>
+            </select>
           </div>
           <div>
             <input

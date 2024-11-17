@@ -52,7 +52,7 @@ const Registration = () => {
       },
     };
 
-    const url = root_url + "/authenticate/register/organization/submit/";
+    const url = root_url + "/authenticate/organization/submit/";
 
     try {
       const response = await axios.post(url, payload, {
@@ -72,7 +72,7 @@ const Registration = () => {
 
     const payload = {
       data: {
-        type: "IndividualRegisterView",
+        type: "None",
         attributes: {
           data: "Individual Registration",
           organizationName: individualForm.organizationName,
@@ -88,9 +88,12 @@ const Registration = () => {
     let url = "";
 
     if (individualForm.individualType === "Teacher") {
-      url = root_url + "/authenticate/register/teacher/submit/";
-    } else {
-      url = root_url + "/authenticate/register/student/submit/";
+      url = root_url + "/authenticate/teacher/submit/";
+      payload.data.type = "TeacherRegisterView";  
+    } 
+    else {
+      url = root_url + "/authenticate/student/submit/";
+      payload.data.type = "StudentRegisterView";
     }
 
     try {
@@ -162,14 +165,19 @@ const Registration = () => {
             />
           </div>
           <div>
-            <input
-              type="text"
+            <select
               name="individualType"
-              placeholder="Individual Type"
               value={individualForm.individualType}
               onChange={handleIndividualChange}
               required
-            />
+             >
+              <option value="" disabled hidden>
+                Select Individual Type
+              </option>
+              <option value="teacher">Teacher</option>
+              <option value="student">Student</option>
+            </select>
+          </div>
           </div>
           <div>
             <input
@@ -182,14 +190,18 @@ const Registration = () => {
             />
           </div>
           <div>
-            <input
-              type="text"
-              name="rollNumber"
-              placeholder="University Roll Number"
-              value={individualForm.rollNumber}
-              onChange={handleIndividualChange}
-              required
-            />
+            {individualForm.individualType === "student" && (
+              <div>
+                <input
+                  type="text"
+                  name="rollNumber"
+                  placeholder="University Roll Number"
+                  value={individualForm.rollNumber}
+                  onChange={handleIndividualChange}
+                  required
+                />
+              </div>
+            )}
           </div>
           <div>
             <input

@@ -13,7 +13,7 @@
   --input-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Light shadow */
 }
 
-input {
+input, select {
   padding: var(--input-padding);
   width: var(--input-width);
   box-sizing: border-box;
@@ -33,7 +33,7 @@ input::placeholder {
 }
 
 /* Focus styles */
-input:focus {
+input:focus, select:focus {
   outline: none; /* Remove default outline */
   border-color: var(--input-border-focus); /* Change border color on focus */
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Shadow effect on focus */

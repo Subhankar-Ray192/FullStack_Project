@@ -1,0 +1,7 @@
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* This shifts the icons to the right end */
+  font-size: 20px; /* Adjust size as needed */
+  margin-right: 10px;
+}
