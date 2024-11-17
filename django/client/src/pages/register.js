@@ -20,6 +20,7 @@ const Registration = () => {
     organizationName: "",
     individualType: "",
     individualName: "",
+    individualEmail: "",
     rollNumber: "",
     individualPassword: "",
     department: "",
@@ -70,30 +71,44 @@ const Registration = () => {
   const handleIndividualSubmit = async (e) => {
     e.preventDefault(); // Prevent form from submitting
 
-    const payload = {
+    let url = "";
+    let payload = "";
+
+    if (individualForm.individualType === "teacher") {
+      url = root_url + "/authenticate/teacher/submit/";
+      
+      payload = {
       data: {
-        type: "None",
+        type: "TeacherRegisterView",
         attributes: {
           data: "Individual Registration",
-          organizationName: individualForm.organizationName,
-          individualType: individualForm.individualType,
-          individualName: individualForm.individualName,
-          rollNumber: individualForm.rollNumber,
-          individualPassword: individualForm.individualPassword,
-          department: individualForm.department,
+          org_name: individualForm.organizationName,
+          teacher_name: individualForm.individualName,
+          teacher_email: individualForm.individualEmail,
+          password: individualForm.individualPassword,
+          teacher_department: individualForm.department,
         },
       },
     };
-
-    let url = "";
-
-    if (individualForm.individualType === "Teacher") {
-      url = root_url + "/authenticate/teacher/submit/";
-      payload.data.type = "TeacherRegisterView";  
+    
     } 
     else {
       url = root_url + "/authenticate/student/submit/";
-      payload.data.type = "StudentRegisterView";
+      
+      payload = {
+      data: {
+        type: "StudentRegisterView",
+        attributes: {
+          data: "Individual Registration",
+          org_name: individualForm.organizationName,
+          student_name: individualForm.individualName,
+          student_roll: individualForm.rollNumber,
+          student_password: individualForm.individualPassword,
+          student_department: individualForm.department,
+        },
+      },
+    };
+    
     }
 
     try {
@@ -160,6 +175,16 @@ const Registration = () => {
               name="organizationName"
               placeholder="Organization Name"
               value={individualForm.organizationName}
+              onChange={handleIndividualChange}
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              name="individualEmail"
+              placeholder="Individual Email"
+              value={individualForm.individualEmail}
               onChange={handleIndividualChange}
               required
             />

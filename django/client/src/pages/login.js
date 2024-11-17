@@ -64,7 +64,11 @@ const Login = () => {
         },
       });
       console.log("Response from Organization Login:", response.data);
-      navigate("/admin-dashboard");
+      
+      if(response.status === 200){
+         navigate("/admin-dashboard");
+      }
+
     } catch (error) {
       console.error(
         "Error during organization login:",
@@ -77,9 +81,29 @@ const Login = () => {
   const handleIndividualSubmit = async (e) => {
     e.preventDefault();
 
-    const payload = {
+
+    let url = "";
+    let payload = "";
+
+    if (individualLoginForm.individualType === "teacher") {
+      url = root_url + "/authorize/teacher/submit/";
+      
+      payload = {
       data: {
-        type: "None",
+        type: "TeacherLoginView",
+        attributes: {
+          email: individualLoginForm.individualEmail,
+          password: individualLoginForm.individualPassword,
+        },
+      },
+    };
+    
+    } 
+    else {
+      url = root_url + "/authorize/student/submit/";
+      payload = {
+      data: {
+        type: "StudentLoginView",
         attributes: {
           email: individualLoginForm.individualEmail,
           password: individualLoginForm.individualPassword,
@@ -87,15 +111,6 @@ const Login = () => {
       },
     };
 
-    let url = "";
-
-    if (individualLoginForm.individualType === "Teacher") {
-      url = root_url + "/authorize/teacher/submit/";
-      payload.data.type = "TeacherLoginView";  
-    } 
-    else {
-      url = root_url + "/authorize/student/submit/";
-      payload.data.type = "StudentLoginView";
     }
 
     try {
@@ -105,6 +120,15 @@ const Login = () => {
         },
       });
       console.log("Response from Individual Login:", response.data);
+
+      if ((individualLoginForm.individualType === "teacher") && (response.status === 200)) {
+          navigate("/teacher-dashboard");
+      }
+
+      if((individualLoginForm.individualType === "student") && (response.status === 200)) {
+          navigate("/student-dashboard");
+      }
+
     } catch (error) {
       console.error(
         "Error during individual login:",
