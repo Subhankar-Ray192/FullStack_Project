@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import "../../styles/dashboard/dropdown.css";
 
-const Dropdown = ({ options, placeholder }) => {
+const Dropdown = ({ options, placeholder, value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(placeholder);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option);
     setIsOpen(false);
+    if (onChange) {
+      onChange(option);
+    }
   };
 
   return (
@@ -20,8 +21,7 @@ const Dropdown = ({ options, placeholder }) => {
       onClick={toggleDropdown}
     >
       <div className="dropdown-selected">
-        {selectedOption}
-        {/* Down arrow icon */}
+        {value || placeholder}
         <span className="dropdown-arrow">
           <i className="bx bxs-down-arrow"></i>
         </span>
@@ -32,7 +32,10 @@ const Dropdown = ({ options, placeholder }) => {
             <div
               key={index}
               className="dropdown-option"
-              onClick={() => handleOptionClick(option)}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleOptionClick(option);
+              }}
             >
               {option}
             </div>
